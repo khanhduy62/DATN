@@ -68,49 +68,52 @@ public class AlgorithmRSA {
         } while (!found);
         d = e.modInverse(m);
 //        d = ModuloInverse(e, m);
-        System.out.println("d: "+ModuloInverse(new BigInteger("15"), new BigInteger("26")));
     }
-//p: 11
-//q: 13
-//m: 120
-//n: 143
-//d: 37
-//e: 13
-    public BigInteger ModuloInverse(BigInteger a, BigInteger m){
-        BigInteger xa= BigInteger.ONE; 
-        BigInteger xm= BigInteger.ZERO;
-        BigInteger store_m = m;
-        BigInteger q, xr, r;
-        BigInteger am = new BigInteger("-2");
-        System.out.println("mod: "+am.mod(new BigInteger("26")));
-        int i=0;
-        while (m != BigInteger.ZERO){
-            System.out.println("------Lan thu "+i+"---------");
-            q = a.divide(m);
-            System.out.println("q= "+q);
-            xr= xa.subtract(q.multiply(xm));
-            System.out.println("xr= "+xr);
-            xa= xm;
-            System.out.println("xa= "+xa);
-            xm= xr;
-            System.out.println("xm= "+xm);
-            r = a.mod(m);
-            System.out.println("r - a -m = "+r+" - "+a+" - "+m);
-            a= m;
-            m= r;
-            System.out.println("a= "+a);
-            System.out.println("m= "+m);
-            i++;
-            System.out.println("--------------");
+// e = 15 m = 26  => d= 7
+// e = 17  m = 120 => d= 113
+    public BigInteger ModuloInverse(BigInteger a, BigInteger b){
+        
+        BigInteger b1 = b;
+        BigInteger[] step = new BigInteger[99];
+        BigInteger[] so_nguyen = new BigInteger[99];
+        int index = 0;
+        BigInteger phan_nguyen = BigInteger.ZERO;
+        BigInteger phan_du = BigInteger.ZERO;
+        BigInteger gtri = BigInteger.ZERO;
+        Inverse_Demo demo = new Inverse_Demo();
+        while (a != BigInteger.ZERO) {
+            phan_nguyen = b.divide(a);
+            phan_du = b.mod(a);
+            so_nguyen[index] = phan_nguyen;
+            if(index < 2){
+                gtri = step[index]= new BigInteger(index+"");
+
+            }else{
+                BigInteger value = tinhModule(step[index-2], step[index-1], so_nguyen[index-2], b1);
+                if (value.compareTo(BigInteger.ZERO) < 0){
+                    value = value.add(b1);
+                }
+                gtri = step[index]= value;
+                
+
+            }
+            b = a;
+            a = phan_du;
+            
+            index++;
         }
-      if ( xa.compareTo(BigInteger.ZERO) < 0 ){
-          xa = store_m.add(xa);
-      }
-      
-        return xa;
+        
+        BigInteger value = tinhModule(step[index-2], step[index-1], so_nguyen[index-2], b1);
+            if (value.compareTo(BigInteger.ZERO) < 0){
+                value = value.add(b1);
+            }
+        System.out.println("Gia tri: "+value);
+        return value;
    }
     
-   
+   public BigInteger tinhModule(BigInteger p2, BigInteger p1, BigInteger q2, BigInteger n){
+        return (p2.subtract(p1.multiply(q2))).mod(n);
+   }
   
     /**
      * Encrypt the given plaintext message.
