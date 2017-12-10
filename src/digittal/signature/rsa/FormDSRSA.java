@@ -230,7 +230,7 @@ public class FormDSRSA extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Băm SHA-1 đầu vào");
+        jLabel9.setText("Băm  đầu vào");
 
         jLabel10.setText(" ");
 
@@ -335,7 +335,7 @@ public class FormDSRSA extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setText("Băm SHA-1 đầu vào");
+        jLabel12.setText("Băm  đầu vào");
 
         jLabel14.setText("Giải mã chữ ký");
 
@@ -460,11 +460,11 @@ public class FormDSRSA extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(38, 38, 38)
                                 .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -525,8 +525,8 @@ public class FormDSRSA extends javax.swing.JFrame {
         lbKetQua_Gui.setForeground(Color.red);
         lbKetQua_Nhan.setText("Đã có khóa công khai");
         lbKetQua_Nhan.setForeground(Color.red);
-        txtKhoaBiMat.setText(rsa.getE().toString());
-        txtKhoaCongKhai.setText(rsa.getD().toString());
+        txtKhoaBiMat.setText(rsa.getD().toString());
+        txtKhoaCongKhai.setText(rsa.getE().toString());
 
         btnTaoChuKy_Gui.setEnabled(true);
         btnKiemTra_Nhan.setEnabled(true);
@@ -555,6 +555,8 @@ public class FormDSRSA extends javax.swing.JFrame {
                 Logger.getLogger(FormDSRSA.class.getName()).log(Level.SEVERE, null, ex);
             }
             txtDauVao_Nhan.setText(txtDauVao_Gui.getText());
+            BigInteger dsrsa = new BigInteger(txtChuKy_Gui.getText());
+            txtGiaiMa_Nhan.setText(rsa.decrypt(dsrsa).toString());
         }
 
 
@@ -571,8 +573,6 @@ public class FormDSRSA extends javax.swing.JFrame {
             try {
                 txtSHA_Nhan.setText(sha1.hamBam(filename).abs() + "");
 
-                BigInteger dsrsa = new BigInteger(txtChuKy_Gui.getText());
-                txtGiaiMa_Nhan.setText(rsa.decrypt(dsrsa).toString());
                 if (txtSHA_Nhan.getText().equals(txtGiaiMa_Nhan.getText())) {
                     JOptionPane.showMessageDialog(null, "Chữ ký vẹn toàn không thay đổi!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
                 } else {

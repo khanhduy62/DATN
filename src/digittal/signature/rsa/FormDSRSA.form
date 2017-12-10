@@ -64,14 +64,14 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="40" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="55" max="32767" attributes="0"/>
                           <Component id="jPanel3" min="-2" pref="238" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="jPanel4" min="-2" pref="231" max="-2" attributes="0"/>
@@ -377,7 +377,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="B&#x103;m SHA-1 &#x111;&#x1ea7;u v&#xe0;o"/>
+                <Property name="text" type="java.lang.String" value="B&#x103;m  &#x111;&#x1ea7;u v&#xe0;o"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
@@ -563,7 +563,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
-                <Property name="text" type="java.lang.String" value="B&#x103;m SHA-1 &#x111;&#x1ea7;u v&#xe0;o"/>
+                <Property name="text" type="java.lang.String" value="B&#x103;m  &#x111;&#x1ea7;u v&#xe0;o"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
