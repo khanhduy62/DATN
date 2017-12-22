@@ -142,6 +142,10 @@ public class AlgorithmRSA {
     public synchronized BigInteger decrypt(BigInteger message) {
         return message.modPow(e, n);
     }
+    
+    public synchronized BigInteger decrypt2(BigInteger message, BigInteger khoaCongKhai) {
+        return message.modPow(khoaCongKhai, n);
+    }
 
     
 

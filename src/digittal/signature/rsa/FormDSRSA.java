@@ -555,8 +555,8 @@ public class FormDSRSA extends javax.swing.JFrame {
                 Logger.getLogger(FormDSRSA.class.getName()).log(Level.SEVERE, null, ex);
             }
             txtDauVao_Nhan.setText(txtDauVao_Gui.getText());
-            BigInteger dsrsa = new BigInteger(txtChuKy_Gui.getText());
-            txtGiaiMa_Nhan.setText(rsa.decrypt(dsrsa).toString());
+//            BigInteger dsrsa = new BigInteger(txtChuKy_Gui.getText());
+//            txtGiaiMa_Nhan.setText(rsa.decrypt(dsrsa).toString());
         }
 
 
@@ -570,6 +570,9 @@ public class FormDSRSA extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Bạn chưa nhập dữ liệu đầu vào", "Thông báo", JOptionPane.ERROR_MESSAGE);
         } else {
             SHA1 sha1 = new SHA1();
+            BigInteger dsrsa = new BigInteger(txtChuKy_Gui.getText());
+            BigInteger khoaCongKhai = new BigInteger(txtKhoaCongKhai.getText());
+            txtGiaiMa_Nhan.setText(rsa.decrypt2(dsrsa, khoaCongKhai).toString());
             try {
                 txtSHA_Nhan.setText(sha1.hamBam(filename).abs() + "");
 
